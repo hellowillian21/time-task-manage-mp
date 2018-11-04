@@ -1,0 +1,74 @@
+<view class="container">
+  <view class="setting-task" hidden="{{startTask}}">
+    <view class="task-title">选择一个任务</view>
+    <view class="task-wrapper">
+      <view class="task-cell"  wx:for="{{taskOptions}}" bindtap="chooseTaskTap" data-index="{{item.id}}" wx:key="index">
+          <!-- <image wx:if="{{!item.checked}}" class="task-icon" src="{{item.iconPath}}"></image>
+          <image wx:if="{{item.checked}}" class="task-icon" src="{{item.selectedIconPath}}"></image> -->
+          <image class="task-icon" src="{{item.checked==true?item.selectedIconPath:item.iconPath}}"></image>
+          <view class="task-label">{{item.name}}</view>
+      </view>
+    </view>
+    <view class="btn-wrapper">
+      <button class="open-task-btn" hover-class='open-task-btn-hover' bindtap="openTaskTap">开启</button>
+    </view>
+  </view>
+
+  <view class="setting-timer" hidden="{{!startTask}}">
+    <view class="timer-time-wrapper">
+      <view class="remind" wx:if="{{!start}}">战胜分心!</view>
+      <view class="remind" wx:if="{{start}}">请保持专注!</view>
+      <view class="timer-time" wx:if="{{start}}">{{formatTime}}</view>
+    </view>
+    <view class="timer-canvas" hidden="{{!showCanvas}}">
+      <canvas canvas-id="timer-progress-bg" class="timer-progress-bg"></canvas>
+      <canvas canvas-id="timer-progress-canvas" class="timer-progress-canvas">
+        <!-- 中止时弹窗 -->
+        <cover-view class="timer-alert" hidden="{{!timerAlert}}">
+          <cover-view class="timer-alert-info">你确定中止计时吗?</cover-view>
+          <cover-view class="timer-alert-footer">
+            <cover-view class="timer-alert-cancel" bindtap="timerAlertCancelTap">取消</cover-view>
+            <cover-view class="timer-aleret-giveup" bindtap="timerAlertGiveupTap">放弃计时</cover-view>
+            <cover-view class="timer-alert-complete" bindtap="timerCompleted">完成计时</cover-view>
+          </cover-view>
+        </cover-view>
+      </canvas>
+      <view class="timer-info" bindtap="hitMeTap">
+        <view wx:if="{{!start}}">{{formatTime}}</view>
+        <view class="hit-me-title" wx:if="{{start && showHitMeTitle}}">注意力不集中时点击我!</view>
+        <view wx:if="{{start && !showHitMeTitle}}">{{hitMeNum}}</view>
+      </view>
+    </view>
+
+    <!-- 弹窗设置定时器 -->
+    <view class="setting-alert" wx:if="{{settingAlert}}">
+      <view class="setting-alert-title">设置计时器</view>
+      <view class="setting-alert-time-wrapper">
+        <view class="setting-alert-time-title">时长 - {{tempTotalTime / 60}}分钟</view>
+        <slider bindchanging="totalTimeChange" min="5" value="{{totalTime / 60}}" max="180" block-size="12" block-color="#025f64" 
+        activeColor="#025f64" show-value/>
+      </view>
+      <view class="setting-alert-repeat-wrapper">
+        <view class="setting-alert-repeat-titles">重复 - {{tempRepeat}}次</view>
+        <radio-group class="repeat-radio-group" bindchange="repeatChange">
+          <label class="radio" wx:for="{{repeatOptions}}">
+            <radio class="repeat-radio" value="{{item.name}}" checked="{{item.checked}}" disabled ="{{item.disabled}}" color="#025f64"/>
+          </label>
+        </radio-group>
+      </view>
+      <view class="tips">计时器将在下午11:00完成</view>
+      <view class="setting-alert-btn-wrapper">
+        <button class="setting-alert-btn-cancel" bindtap="settingAlertCancelTap">取消</button>
+        <button class="setting-alert-btn-set" hover-class="setting-alert-btn-set-hover" bindtap="settingAlertSetTap">设置</button>
+      </view>
+    </view>
+
+    <view class="setting-btn-wrapper">
+      <image class="setting-btn" src="../../assets/images/setting-left.png" bindtap="settingLeftBtnTap"></image>
+      <button wx:if="{{hasStart}}" class="start-btn" hover-class="start-btn-hover" bindtap="startTap">开始</button>
+      <button wx:if="{{hasStop}}" class="stop-btn" hover-class="stop-btn-hover" bindtap="stopTap">终止</button>
+      <image class="setting-btn" src="../../assets/images/setting-right.png" bindtap="settingRightBtnTap"></image>
+    </view>
+  </view>
+  
+</view>

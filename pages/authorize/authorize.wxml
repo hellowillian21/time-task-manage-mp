@@ -1,0 +1,3 @@
+<view class="container">
+  <button open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo" class="get-auth-login" hover-class="get-auth-login-hover">立即登录</button>
+</view>

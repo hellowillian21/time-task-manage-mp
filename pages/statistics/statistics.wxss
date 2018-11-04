@@ -1,0 +1,87 @@
+/* pages/statistics/statistics.wxss */
+.wrapper {
+  margin: 0;
+  padding: 0;
+  color: #eee;
+}
+.total {
+  width: 100%;
+  height: 100rpx;
+  display: flex;
+  justify-content: space-around;
+  padding: 0 60rpx;
+  box-sizing: border-box; 
+  margin-top: 20rpx;
+}
+.total-item {
+}
+.total-item-line {
+  height: 100rpx;
+  border-left: 1px solid #20b2aa;
+}
+.total-item-title {
+  font-size: 18px;
+}
+.total-item-title text {
+  font-size: 12px;
+}
+.total-item-number {
+  color: #20b2aa;
+}
+
+.today {
+  width: 100%;
+  color: #eee;
+  padding: 0 30rpx;
+  box-sizing: border-box;
+  margin-top: 80rpx;
+}
+.today-header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 16px;
+}
+.today-header-item-date {
+  font-size: 12px;
+  color: #eee;
+}
+/* 今日完成图表 */
+.today-chart-wrapper {
+  width: 100%;
+  /* border: 1px solid red; */
+}
+.today-chart-canvas {
+  width: 100%;
+  height: 400rpx;
+}
+
+/* 最近一周图表 */
+.last-week {
+  width: 100%;
+  padding: 0 30rpx;
+  box-sizing: border-box;
+  margin-top: 60rpx;
+  margin-bottom: 30rpx;
+}
+.last-week-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+}
+.last-week-header-item-date {
+  font-size: 12px;
+  color: #eee;
+}
+.last-week-chart-wrapper {
+  width: 100%;
+  height: 400rpx;
+  margin-top: 60rpx;
+  /* border: 1px solid red; */
+}
+.last-week-chart-canvas {
+  width: 100%;
+  height: 100%;
+  /* border: 1px solid pink; */
+}

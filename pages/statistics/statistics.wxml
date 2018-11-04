@@ -1,0 +1,44 @@
+<view class="wrapper">
+  <!-- 显示今日计时任务时长和历史累计时长 -->
+  <view class="total">
+     <view class="total-item">
+      <view class="total-item-title">今日累计<text>(分钟)</text></view>
+      <view class="total-item-number">{{todayTotalTime}}</view>
+    </view>
+    <view class="total-item-line"></view>
+    <view class="total-item">
+      <view class="total-item-title">历史累计<text>(分钟)</text></view>
+      <view class="total-item-number">{{allTime}}</view>
+    </view>
+  </view>
+  <view class="today">
+    <!-- 今日计时头部 -->
+    <view class="today-header">
+      <view class="today-header-item">
+        <view class="today-header-item-title">今日完成</view>
+        <view class="today-header-item-date">2018年11月1日</view>
+      </view>
+      <view class="today-header-item-time">{{todayTotalTime}}分钟</view>
+    </view>
+    <!-- 今日计时图表分析 -->
+    <view class="today-chart-wrapper">
+      <canvas canvas-id="todayChart" class="today-chart-canvas" ></canvas>
+    </view>
+  </view>
+
+  <!-- 最近一周图表 -->
+  <view class="last-week">
+    <!-- 今日计时头部 -->
+    <view class="last-week-header">
+      <view class="last-week-header-item">
+        <view class="last-week-header-item-title">最近一周完成</view>
+        <view class="last-week-header-item-date">2018年11月1日</view>
+      </view>
+      <view class="last-week-header-item-time">{{weekTotalTime}}分钟</view>
+    </view>
+    <!-- 今日计时图表分析 -->
+    <view class="last-week-chart-wrapper">
+      <canvas canvas-id="lastWeekChart" class="last-week-chart-canvas" bindtouchstart="weekChartTouchHandler"></canvas>
+    </view>
+  </view>
+</view>

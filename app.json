@@ -1,0 +1,44 @@
+{
+  "pages": [
+    "pages/timer/timer",
+    "pages/statistics/statistics",
+    "pages/todo/todo",
+    "pages/logs/logs",
+    "pages/authorize/authorize"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#3b525a",
+    "backgroundColor": "#3b525a",
+    "navigationBarTitleText": "TTM",
+    "navigationBarTextStyle": "#fff"
+  },
+  "tabBar": {
+    "color": "#a6a6a6",
+    "backgroundColor": "#2c3d43",
+    "selectedColor": "#fff",
+    "borderStyle": "#D7D7D7",
+    "list": [
+      {
+        "pagePath": "pages/statistics/statistics",
+        "text": "统计",
+        "iconPath": "assets/images/statistics.png",
+        "selectedIconPath": "assets/images/statistics-selected.png"
+      },
+      {
+        "pagePath": "pages/timer/timer",
+        "text": "计时",
+        "iconPath": "assets/images/timer.png",
+        "selectedIconPath": "assets/images/timer-selected.png"
+      },
+      {
+        "pagePath": "pages/todo/todo",
+        "text": "待办",
+        "iconPath": "assets/images/todo.png",
+        "selectedIconPath": "assets/images/todo-selected.png"
+      }
+    ],
+    "position": "bottom"
+  },
+  "requiredBackgroundModes": "audio"
+}

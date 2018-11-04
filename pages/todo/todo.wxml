@@ -1,0 +1,51 @@
+<view class="container">
+  <swiper class="todo-swiper" current="{{currentTab}}" duration="300"  bindchange="todoSwiperChange">
+      <swiper-item>
+          <scroll-view scroll-y class="todo-list">
+            <view class="todo-item" wx:for="{{todoAllData}}" wx:key="index" bindlongpress='todoItemLongpress' data-index="{{index}}">
+              <image class="todo-option-icon" data-index="{{index}}"   bindtap="todoStateTap" src="{{item.status==1?selectedIconPath:iconPath}}"></image>
+              <view class="todo-item-content">
+                <view class="{{item.status==1?'todo-completed':''}}">{{item.content}}</view>
+                <view class="todo-item-content-time {{item.status==1?'todo-completed':''}}">{{item.doTime}}</view>
+              </view>
+            </view>
+          </scroll-view>
+      </swiper-item>
+      <swiper-item>
+        <scroll-view scroll-y class="todo-list">
+            <view class="todo-item" wx:for="{{todoTodayData}}" wx:key="index" data-index="{{index}}"  bindlongpress='todoItemLongpress'>
+              <image class="todo-option-icon" data-index="{{index}}" bindtap="todoStateTap" src="{{item.status==1?selectedIconPath:iconPath}}"></image>
+             <view class="todo-item-content">
+                <view class="{{item.status==1?'todo-completed':''}}">{{item.content}}</view>
+                <view class="todo-item-content-time {{item.status==1?'todo-completed':''}}">{{item.doTime}}</view>
+              </view>
+              
+            </view>
+          </scroll-view>
+      </swiper-item>
+  </swiper>
+  <view>
+    <button class="add-todo" hover-class="add-todo-hover" bindtap="addTodoBtnTap">+</button>
+  </view>
+  <view class="todo-swiper-tab">
+      <view class="swiper-tab-item {{currentTab==0?'active':''}}" data-current="0" bindtap="todoTabTap">全部</view>
+      <view class="swiper-tab-item {{currentTab==1?'active':''}}" data-current="1" bindtap="todoTabTap">今天</view>
+  </view>
+  <view wx:if="{{showTodoInput}}" class="add-todo-input-wrapper">
+    <image class="add-todo-unfold-icon" bindtap="addTodoUnfold" src="../../assets/images/unfold.png"></image>
+    <form>
+      <input class="add-todo-input" bindinput="addTodoInput" type="text" placeholder="添加一个待办事项" auto-focus/>
+      <picker mode="date" class="add-todo-date" value="{{addTodoDate}}" start="" end="" bindchange="bindDateChange">
+        <view class="picker">
+          <text class="picker-label">待办日期: </text>{{addTodoDate}}
+        </view>
+      </picker>
+      <picker mode="time" class="add-todo-time" value="{{addTodoTime}}" start="" end="" bindchange="bindTimeChange">
+        <view class="picker">
+          <text class="picker-label">待办时间: </text>{{addTodoTime}}
+        </view>
+      </picker>
+      <image class="add-todo-send-icon" bindtap="addTodoSendTap" src="../../assets/images/send.png"></image>
+    </form>
+  </view>
+</view>

@@ -1,0 +1,10 @@
+.get-auth-login{
+  position: absolute;
+  bottom: 300rpx;
+  width: 150px;
+  background-color: #20b2aa;
+  color: rgb(224, 223, 223);
+}
+.get-auth-login-hover {
+  background-color: #32a2a8;
+}
